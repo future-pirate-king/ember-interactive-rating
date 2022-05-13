@@ -1,0 +1,27 @@
+<div class="rating-modal-container">
+    {{#if this.ratingSubmitted}}
+        <div class="rating-thanks-container">
+            <img src="/assets/images/illustration-thank-you.svg" alt="thank-you" />
+
+            <span class="selected-rating-text">You selected {{this.submittedRating}} out of 5</span>
+
+            <h2>Thank you!</h2>
+            <p>We appreciate you taking the time to give a rating. if you ever need more support, don't hesitate to get in touch!</p>
+        </div>
+    {{else}}
+        <div class="star-container">
+            <img src="/assets/images/icon-star.svg" alt="star-rating" class="star" />
+        </div>
+
+        <h2>How did we do ?</h2>
+        <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+
+        <ul {{on 'click' this.ratingClicked}}>
+            {{#each this.ratings as |rating|}}
+                <li class="{{if rating.selected 'activeRating'}}" data-selected={{rating.selected}} data-rating={{rating.value}}>{{rating.value}}</li>
+            {{/each}}
+        </ul>
+
+        <button type="button" {{on 'click' this.submitClicked}}>Submit</button>
+    {{/if}}
+</div>
